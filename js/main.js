@@ -36,23 +36,44 @@ const pecas = {
 
 controle.forEach((elemento) => {
     elemento.addEventListener("click", (evento) => {
-        manipulaDanos(evento.target.dataset.controle, evento.target.parentNode)
-        atualizaEstatistica(evento.target.dataset.peca)
+        manipulaDados(evento.target.dataset.controle, evento.target.parentNode, evento.target.dataset.peca)
     })
 })
 
-function manipulaDanos(operacao, controle) {
-    const peca = controle.querySelector("[data-contador]")
+function manipulaDados(operacao, controle, peca) {
+    const pecaContador = controle.querySelector("[data-contador]")
+    let valorAtual = parseInt(pecaContador.value)
 
     if (operacao === "-") {
-        peca.value = parseInt(peca.value) - 1
+        if (valorAtual > 0){
+            pecaContador.value = valorAtual - 1;
+            atualizaEstatistica(peca, "-");
+        }       
     } else {
-        peca.value = parseInt(peca.value) + 1
+        pecaContador.value = valorAtual + 1;
+        atualizaEstatistica(peca, "+");
     }
 }
 
-function atualizaEstatistica(peca) {
+function atualizaEstatistica(peca, operacao) {
     estatisticas.forEach((elemento) => {
-        elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
-    })
+        let valor = pecas[peca][elemento.dataset.estatistica];
+        if (operacao === "-"){
+            valor = -valor;
+        }
+        elemento.textContent = parseInt(elemento.textContent) + valor;
+    });
+}
+
+
+const listaCores = document.querySelectorAll('.cores li');
+const robotron = document.querySelector(".robo");
+
+for(let i = 0; i < listaCores.length; i++) {
+    const cor = listaCores[i];
+    const cores = cor.classList.value.split(' ')[1];
+
+    cor.onclick = function() {
+        robotron.setAttribute(`src`, `./img/${cores}/robotron.png`);
+    }
 }

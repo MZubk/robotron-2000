@@ -2,6 +2,12 @@
     --main-cinza: #CCCCCC;
     --main-branco: #FFFFFF;
     --main-preto: #000000;
+    --robo-amarelo: #f4d82f;
+    --robo-azul: #4f6999;
+    --robo-branco: #e3f8ff;
+    --robo-preto: #535653;
+    --robo-rosa: #e296b7;
+    --robo-vermelho: #bf6550;
 }
 
 * {
@@ -55,11 +61,11 @@ main {
     line-height: 0.8;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    color: rgba(255,255,255,0.8)
+    color: rgba(255, 255, 255, 0.8)
 }
 
 .box {
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     clip-path: polygon(calc(100% - 30px) 0, 100% 30px, 100% calc(100% - 30px), calc(100% - 30px) 100%, 30px 100%, 0 calc(100% - 30px), 0 30px, 30px 0);
     border-left: 5px solid var(--main-cinza);
     height: 80%;
@@ -72,7 +78,8 @@ main {
 }
 
 .montador {
-    height: 100%;;
+    height: 100%;
+    ;
 }
 
 .montador-conteudo {
@@ -129,6 +136,50 @@ main {
 
 .linha {
     border-color: var(--main-cinza);
+}
+
+/****************************** Troca cor *****/
+
+.box-cores {
+    flex-basis: 23%;
+    padding: 10px 30px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cor {
+    margin: 1.25em;
+    font-size: 1.5em;
+    padding: 10px 35px 5px 10px;
+    border: 3px solid var(--main-branco);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
+    /*-clip-path: polygon(100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 0);*/
+    cursor: pointer;
+}
+
+.amarelo {
+    background-color: var(--robo-amarelo);
+}
+
+.azul {
+    background-color: var(--robo-azul);
+}
+
+.branco {
+    background-color: var(--robo-branco);
+}
+
+.preto {
+    background-color: var(--robo-preto);
+}
+
+.rosa {
+    background-color: var(--robo-rosa);
+}
+
+.vermelho {
+    background-color: var(--robo-vermelho);
 }
 
 .producao {
@@ -210,9 +261,10 @@ main {
 }
 
 @media screen and (max-width: 1600px) {
-    body { 
+    body {
         font-size: 14px;
     }
+
     main {
         width: 90vw;
         height: 80vh;
@@ -221,7 +273,7 @@ main {
 }
 
 @media screen and (max-width: 1200px) {
-    body { 
+    body {
         font-size: 13px;
     }
 
